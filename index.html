@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coyote Media Group | Real Estate Photography</title>
+  <style>
+    :root {
+      --background: #f7f8fb;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --accent: #0f766e;
+      --accent-strong: #115e59;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(120deg, rgba(15, 118, 110, 0.9), rgba(17, 94, 89, 0.9)), url("https://images.unsplash.com/photo-1560185008-b033106af5c3?auto=format&fit=crop&w=1500&q=80") center/cover no-repeat;
+      color: #fff;
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 0.75rem;
+    }
+
+    header p {
+      max-width: 640px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .button {
+      display: inline-block;
+      background: #fff;
+      color: var(--accent-strong);
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .services,
+    .gallery {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 16px rgba(31, 41, 55, 0.05);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .contact {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .contact p {
+      margin-bottom: 0.4rem;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Real Estate Photography That Sells Listings Faster</h1>
+    <p>Coyote Media Group captures bright interiors, dramatic exteriors, and compelling lifestyle visuals that help agents stand out.</p>
+    <a class="button" href="#contact">Book a Shoot</a>
+  </header>
+
+  <main>
+    <section aria-labelledby="services-title">
+      <h2 id="services-title">Photography Services</h2>
+      <div class="services">
+        <article class="card">
+          <h3>MLS Photo Packages</h3>
+          <p>Professionally edited images optimized for listing platforms and social media.</p>
+        </article>
+        <article class="card">
+          <h3>Twilight Sessions</h3>
+          <p>Sunset and dusk captures that highlight curb appeal and premium property features.</p>
+        </article>
+        <article class="card">
+          <h3>Drone Coverage</h3>
+          <p>Aerial perspectives to showcase lot size, neighborhood proximity, and unique property layouts.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="portfolio-title">
+      <h2 id="portfolio-title">Sample Portfolio</h2>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Bright modern living room with open layout">
+        <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=900&q=80" alt="Luxury kitchen with marble island and pendant lighting">
+        <img src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?auto=format&fit=crop&w=900&q=80" alt="Contemporary home exterior at dusk with pool">
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p>Email: hello@coyotemediagroup.com</p>
+      <p>Phone: (555) 321-0199</p>
+      <p>Service Area: Greater Metro Region</p>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Coyote Media Group. Real Estate Photography Template.
+  </footer>
+</body>
+</html>
