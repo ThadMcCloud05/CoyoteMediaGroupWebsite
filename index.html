@@ -277,12 +277,14 @@
       });
     });
 
-    // Parallax
+    // Parallax (desktop only)
     const hero = document.querySelector('.hero');
-    window.addEventListener('scroll', () => {
-      const offset = window.scrollY * 0.4;
-      hero.style.backgroundPositionY = `calc(50% + ${offset}px)`;
-    }, { passive: true });
+    if (window.innerWidth > 480) {
+      window.addEventListener('scroll', () => {
+        const offset = window.scrollY * 0.4;
+        hero.style.backgroundPositionY = `calc(50% + ${offset}px)`;
+      }, { passive: true });
+    }
 
     // Modal
     const modal = document.getElementById('bookingModal');
