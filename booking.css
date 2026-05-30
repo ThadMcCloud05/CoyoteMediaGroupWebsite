@@ -1,0 +1,389 @@
+.booking-page {
+  min-height: calc(100vh - 80px);
+  background: var(--off-white);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 24px 80px;
+}
+
+.booking-card {
+  background: var(--white);
+  max-width: 560px;
+  width: 100%;
+  padding: 56px 48px;
+}
+
+/* ===== HEADER ===== */
+.booking-header {
+  margin-bottom: 40px;
+}
+
+.booking-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+/* ===== STEP INDICATOR ===== */
+.step-indicator {
+  margin-bottom: 40px;
+}
+
+.step-circles {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Connecting line behind the circles */
+.step-circles::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  height: 1.5px;
+  background: var(--light-gray);
+  z-index: 0;
+}
+
+.step-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--light-gray);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #bbb;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.step-btn span {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #bbb;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+/* Active step */
+.step-btn.active .step-circle {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
+}
+.step-btn.active span {
+  color: var(--black);
+  font-weight: 600;
+}
+
+/* Completed step */
+.step-btn.done .step-circle {
+  background: var(--white);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.step-btn.done span {
+  color: var(--accent);
+}
+
+/* ===== FORM STEPS ===== */
+.form-step .step-desc {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
+
+.step-next {
+  margin-top: 0;
+}
+
+.step-error {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.82rem;
+  color: #c0392b;
+  margin-bottom: 8px;
+}
+
+.step-skip {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.82rem;
+  color: #bbb;
+  text-align: center;
+  margin-top: 14px;
+}
+
+.step-skip-btn {
+  background: none;
+  border: none;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.82rem;
+  color: var(--gray);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.step-skip-btn:hover {
+  color: var(--black);
+}
+
+.step-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.step-back {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--gray);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+.step-back:hover {
+  color: var(--black);
+}
+
+/* ===== SCHEDULE LAYOUT ===== */
+.schedule-layout {
+  margin-bottom: 20px;
+}
+
+.time-section {
+  margin-top: 24px;
+}
+
+/* ── Flatpickr overrides ── */
+.flatpickr-calendar {
+  font-family: 'Instrument Sans', sans-serif !important;
+  box-shadow: none !important;
+  border: 1px solid var(--light-gray) !important;
+  border-radius: 2px !important;
+}
+.flatpickr-months {
+  padding: 8px 0 4px;
+}
+.flatpickr-month {
+  color: var(--black) !important;
+  fill: var(--black) !important;
+}
+.flatpickr-current-month span.cur-month,
+.flatpickr-current-month input.cur-year {
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  color: var(--black) !important;
+}
+.flatpickr-weekday {
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  color: #bbb !important;
+}
+.flatpickr-day {
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  border-radius: 50% !important;
+  color: var(--black) !important;
+}
+.flatpickr-day:hover,
+.flatpickr-day.prevMonthDay:hover,
+.flatpickr-day.nextMonthDay:hover {
+  background: var(--off-white) !important;
+  border-color: transparent !important;
+}
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--white) !important;
+}
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover {
+  color: #ddd !important;
+}
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+  color: #ccc !important;
+}
+.flatpickr-prev-month svg,
+.flatpickr-next-month svg {
+  fill: var(--gray) !important;
+}
+.flatpickr-prev-month:hover svg,
+.flatpickr-next-month:hover svg {
+  fill: var(--black) !important;
+}
+
+/* ── Time buttons ── */
+.time-section-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 10px;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  max-height: 140px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.time-btn {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--black);
+  background: none;
+  border: 1px solid var(--light-gray);
+  padding: 5px 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  border-radius: 2px;
+}
+.time-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.time-btn.selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
+}
+
+/* Selected summary */
+.schedule-selection {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent);
+  min-height: 20px;
+  margin-bottom: 16px;
+}
+
+.schedule-note {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.8rem;
+  color: #bbb;
+  margin-bottom: 16px;
+}
+
+/* ===== FORM SECTION DIVIDER ===== */
+.form-section-divider {
+  border: none;
+  border-top: 1px solid var(--light-gray);
+  margin: 28px 0 4px;
+}
+
+/* ===== CITY / STATE ROW ===== */
+.city-state-row {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  gap: 16px;
+}
+
+/* ===== INPUT ICONS ===== */
+.input-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0;
+  color: #bbb;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.booking-form .has-icon {
+  padding-left: 24px;
+}
+
+.booking-form .has-suffix {
+  padding-right: 40px;
+}
+
+.input-suffix {
+  position: absolute;
+  right: 0;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.88rem;
+  color: #bbb;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+/* ===== SUCCESS ===== */
+.form-success {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.form-success h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+
+.form-success p {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.form-success a { color: var(--accent); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 680px) {
+  .booking-card { padding: 36px 20px; }
+  .step-btn span { display: none; }
+  .time-grid { grid-template-columns: 1fr 1fr; max-height: none; }
+}
+
+@media (max-width: 480px) {
+  .booking-page { padding: 40px 12px 60px; }
+  .booking-card { padding: 28px 16px; }
+  .booking-header h1 { font-size: 1.6rem; }
+  .city-state-row { grid-template-columns: 1fr 64px; gap: 10px; }
+  .time-grid { grid-template-columns: 1fr 1fr; max-height: none; }
+  .step-footer { margin-top: 16px; }
+}
