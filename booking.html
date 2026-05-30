@@ -160,6 +160,7 @@
         if (i < n) btn.classList.add('done');
         if (i === n) btn.classList.add('active');
       }
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
     // ── Flatpickr calendar ──
@@ -232,6 +233,7 @@
       document.getElementById('step3').classList.remove('hidden');
       document.getElementById('btn1').classList.add('done');
       document.getElementById('btn3').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
     // ── Square footage suffix ──
