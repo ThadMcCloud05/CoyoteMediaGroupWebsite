@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Schedule a Shoot — Coyote Media Group</title>
+  <title>Book a Shoot — Coyote Media Group</title>
   <link rel="icon" type="image/png" href="assets/logos/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,12 +36,7 @@
     <div class="booking-card">
 
       <div class="booking-header">
-        <h1>Schedule your first shoot</h1>
-        <div class="modal-value">
-          <s>$250+ value</s>
-          <span class="modal-value-price">$0</span>
-          <span class="modal-value-label">First shoot free, no commitment</span>
-        </div>
+        <h1>Book your next shoot</h1>
       </div>
 
       <!-- STEP INDICATOR -->
@@ -63,7 +58,7 @@
       </div>
 
       <form class="booking-form" id="bookingForm" action="https://formspree.io/f/mreddygq" method="POST">
-        <input type="hidden" name="_subject" value="New Shoot Booking — Coyote Media Group" />
+        <input type="hidden" name="_subject" value="Returning Client Booking — Coyote Media Group" />
 
         <!-- STEP 1: Property -->
         <div class="form-step" id="step1">
@@ -81,11 +76,38 @@
             <input type="text" name="sqft" placeholder="Square footage (optional)" class="has-icon has-suffix" inputmode="numeric" />
             <span class="input-suffix" id="sqftSuffix">sq ft</span>
           </div>
-          <input type="hidden" name="package" value="Free first shoot" />
+
+          <div class="package-select-label">Select a package</div>
+          <div class="package-options" id="packageOptions">
+            <label class="package-option">
+              <input type="radio" name="package" value="Listed — $175" required />
+              <div class="package-option-card">
+                <div class="package-option-name">Listed</div>
+                <div class="package-option-detail">35 edited photos · Floor plan · 24-hr delivery</div>
+                <div class="package-option-price">$175</div>
+              </div>
+            </label>
+            <label class="package-option">
+              <input type="radio" name="package" value="Listed &amp; Found — $285" />
+              <div class="package-option-card">
+                <div class="package-option-name">Listed &amp; Found</div>
+                <div class="package-option-detail">50 photos · Floor plan · Drone · Twilight · 24-hr</div>
+                <div class="package-option-price">$285</div>
+              </div>
+            </label>
+            <label class="package-option">
+              <input type="radio" name="package" value="Listed &amp; Sold — $425" />
+              <div class="package-option-card">
+                <div class="package-option-name">Listed &amp; Sold</div>
+                <div class="package-option-detail">65+ photos · Floor plan · Drone · Twilight · Same-day</div>
+                <div class="package-option-price">$425</div>
+              </div>
+            </label>
+          </div>
+
           <p class="schedule-note">Don't worry — we'll confirm all the details with you before the shoot.<br>This can be changed later.</p>
           <p class="step-error hidden" id="step1Error">Please enter a property address before continuing.</p>
           <button type="button" class="btn-primary step-next" onclick="advanceFromStep1()">Next</button>
-          <p class="step-skip">No property yet? <button type="button" class="step-skip-btn" onclick="skipToContact()">Skip — just get in touch</button></p>
         </div>
 
         <!-- STEP 2: Schedule -->
@@ -123,8 +145,6 @@
             <input type="tel" name="phone" placeholder="Phone number" class="has-icon" />
           </div>
           <input type="text" name="brokerage" placeholder="Brokerage (optional)" />
-          <div class="form-section-divider"></div>
-          <input type="text" name="referral_source" placeholder="How did you hear about us? (optional)" />
           <div class="step-footer">
             <button type="button" class="step-back" onclick="goTo(2)">← Back</button>
             <button type="submit" class="btn-primary">Confirm Booking</button>
@@ -175,6 +195,7 @@
         selectedDateVal = dateStr;
         document.getElementById('selectedDate').value = dateStr;
         document.getElementById('timeSection').classList.remove('hidden');
+        updateTimeAvailability(dateStr);
         updateSelection();
       }
     });
@@ -204,6 +225,26 @@
       timeGrid.appendChild(btn);
     });
 
+    function updateTimeAvailability(dateStr) {
+      const isToday = dateStr === new Date().toISOString().slice(0, 10);
+      const nowMinutes = new Date().getHours() * 60 + new Date().getMinutes();
+      document.querySelectorAll('.time-btn').forEach(btn => {
+        const [time, period] = btn.textContent.split(' ');
+        let [h, m] = time.split(':').map(Number);
+        if (period === 'PM' && h !== 12) h += 12;
+        if (period === 'AM' && h === 12) h = 0;
+        const slotMinutes = h * 60 + m;
+        const tooSoon = isToday && slotMinutes < nowMinutes + 90;
+        btn.disabled = tooSoon;
+        btn.classList.toggle('time-btn-disabled', tooSoon);
+        if (tooSoon && btn.classList.contains('selected')) {
+          btn.classList.remove('selected');
+          selectedTimeVal = '';
+          document.getElementById('selectedTime').value = '';
+        }
+      });
+    }
+
     function updateSelection() {
       const el = document.getElementById('scheduleSelection');
       if (selectedDateVal && selectedTimeVal) {
@@ -226,16 +267,6 @@
       goTo(2);
     }
 
-    // ── Skip to contact ──
-    function skipToContact() {
-      document.querySelectorAll('.form-step').forEach(s => s.classList.add('hidden'));
-      document.querySelectorAll('.step-btn').forEach(b => b.classList.remove('active', 'done'));
-      document.getElementById('step3').classList.remove('hidden');
-      document.getElementById('btn1').classList.add('done');
-      document.getElementById('btn3').classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    }
-
     // ── Square footage suffix ──
     const sqftInput = document.querySelector('input[name="sqft"]');
     const sqftSuffix = document.getElementById('sqftSuffix');
@@ -253,6 +284,14 @@
       if (digits.length >= 4) formatted += ') ' + digits.slice(3, 6);
       if (digits.length >= 7) formatted += '-' + digits.slice(6, 10);
       e.target.value = formatted;
+    });
+
+    // ── Package option selection styling ──
+    document.querySelectorAll('.package-option input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        document.querySelectorAll('.package-option-card').forEach(c => c.classList.remove('selected'));
+        radio.closest('.package-option').querySelector('.package-option-card').classList.add('selected');
+      });
     });
 
     // ── Form submission ──

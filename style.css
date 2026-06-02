@@ -547,6 +547,90 @@ nav {
   font-size: 1rem;
 }
 
+/* ===== COMPARISON ===== */
+.comparison-section {
+  background: var(--off-white);
+}
+.comparison-eyebrow {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 12px;
+}
+.comparison-sub {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--gray);
+  text-align: center;
+  margin-top: -28px;
+  margin-bottom: 40px;
+}
+.comparison-grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.comparison-col {
+  display: flex;
+  flex-direction: column;
+}
+.comparison-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  margin-bottom: 10px;
+  display: inline-block;
+  align-self: flex-start;
+}
+.comparison-label-before {
+  background: var(--light-gray);
+  color: #888;
+  align-self: flex-end;
+}
+.comparison-label-after {
+  background: var(--accent);
+  color: var(--white);
+}
+.comparison-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+@media (max-width: 600px) {
+  .comparison-grid { grid-template-columns: 1fr; }
+}
+.compare-points {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.compare-points li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--black);
+}
+.compare-points li svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
 /* ===== CONTACT FORM ===== */
 .contact-sub {
   text-align: center;
