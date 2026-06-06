@@ -73,39 +73,15 @@
           </div>
           <div class="input-icon-wrap">
             <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 3v18"/><path d="M3 16l5-5 4 4 5-6 4 4"/></svg>
-            <input type="text" name="sqft" placeholder="Square footage (optional)" class="has-icon has-suffix" inputmode="numeric" />
+            <input type="text" name="sqft" placeholder="Square footage" class="has-icon has-suffix" inputmode="numeric" />
             <span class="input-suffix" id="sqftSuffix">sq ft</span>
           </div>
-
-          <div class="package-select-label">Select a package</div>
-          <div class="package-options" id="packageOptions">
-            <label class="package-option">
-              <input type="radio" name="package" value="Listed — $175" required />
-              <div class="package-option-card">
-                <div class="package-option-name">Listed</div>
-                <div class="package-option-detail">35 edited photos · Floor plan · 24-hr delivery</div>
-                <div class="package-option-price">$175</div>
-              </div>
-            </label>
-            <label class="package-option">
-              <input type="radio" name="package" value="Listed &amp; Found — $285" />
-              <div class="package-option-card">
-                <div class="package-option-name">Listed &amp; Found</div>
-                <div class="package-option-detail">50 photos · Floor plan · Drone · Twilight · 24-hr</div>
-                <div class="package-option-price">$285</div>
-              </div>
-            </label>
-            <label class="package-option">
-              <input type="radio" name="package" value="Listed &amp; Sold — $425" />
-              <div class="package-option-card">
-                <div class="package-option-name">Listed &amp; Sold</div>
-                <div class="package-option-detail">65+ photos · Floor plan · Drone · Twilight · Same-day</div>
-                <div class="package-option-price">$425</div>
-              </div>
-            </label>
+          <div style="display: flex; gap: 12px;">
+            <input type="number" name="bedrooms" placeholder="Beds" min="0" inputmode="numeric" style="width: 120px; flex: none;" />
+            <input type="number" name="bathrooms" placeholder="Baths" min="0" step="0.5" inputmode="decimal" style="width: 120px; flex: none;" />
           </div>
 
-          <p class="schedule-note">Don't worry — we'll confirm all the details with you before the shoot.<br>This can be changed later.</p>
+<p class="schedule-note">Don't worry — we'll confirm all the details with you before the shoot.<br>This can be changed later.</p>
           <p class="step-error hidden" id="step1Error">Please enter a property address before continuing.</p>
           <button type="button" class="btn-primary step-next" onclick="advanceFromStep1()">Next</button>
         </div>
@@ -284,14 +260,6 @@
       if (digits.length >= 4) formatted += ') ' + digits.slice(3, 6);
       if (digits.length >= 7) formatted += '-' + digits.slice(6, 10);
       e.target.value = formatted;
-    });
-
-    // ── Package option selection styling ──
-    document.querySelectorAll('.package-option input[type="radio"]').forEach(radio => {
-      radio.addEventListener('change', () => {
-        document.querySelectorAll('.package-option-card').forEach(c => c.classList.remove('selected'));
-        radio.closest('.package-option').querySelector('.package-option-card').classList.add('selected');
-      });
     });
 
     // ── Form submission ──
