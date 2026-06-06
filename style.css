@@ -852,7 +852,7 @@ footer a { color: var(--accent); }
   .nav-link { display: none; }
   .nav-social { display: none; }
   .logo-sub { display: none; }
-  .logo-text { font-size: 0.72rem; letter-spacing: 1.5px; white-space: nowrap; }
+  .logo-text { font-size: 0.58rem; letter-spacing: 1px; white-space: nowrap; }
   .btn-nav { padding: 8px 14px; font-size: 0.8rem; }
 
   /* Hero */
