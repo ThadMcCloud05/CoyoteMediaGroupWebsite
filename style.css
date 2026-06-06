@@ -848,11 +848,12 @@ footer a { color: var(--accent); }
 
 @media (max-width: 480px) {
   /* Nav */
-  .nav-inner { height: 56px; gap: 8px; }
+  .nav-inner { height: 56px; gap: 6px; }
   .nav-link { display: none; }
   .nav-social { display: none; }
   .logo-sub { display: none; }
-  .logo-text { display: none; }
+  .logo-text { font-size: 0.72rem; letter-spacing: 1.5px; white-space: nowrap; }
+  .btn-nav { padding: 8px 14px; font-size: 0.8rem; }
 
   /* Hero */
   .hero {
