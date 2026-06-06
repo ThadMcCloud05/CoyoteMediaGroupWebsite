@@ -839,6 +839,7 @@ footer a { color: var(--accent); }
 /* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
   .package.featured { transform: scale(1); }
+  nav { padding: 0 16px; }
   .nav-inner { gap: 12px; }
   .logo { font-size: 0.9rem; }
   .nav-phone { display: none; }
@@ -846,11 +847,11 @@ footer a { color: var(--accent); }
 
 @media (max-width: 480px) {
   /* Nav */
-  nav { padding: 0 16px; }
   .nav-inner { height: 56px; gap: 8px; }
   .nav-link { display: none; }
+  .nav-social { display: none; }
   .logo-sub { display: none; }
-  .logo-text { font-size: 0.95rem; }
+  .logo-text { display: none; }
 
   /* Hero */
   .hero {
