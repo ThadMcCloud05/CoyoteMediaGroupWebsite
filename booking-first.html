@@ -78,8 +78,12 @@
           </div>
           <div class="input-icon-wrap">
             <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 3v18"/><path d="M3 16l5-5 4 4 5-6 4 4"/></svg>
-            <input type="text" name="sqft" placeholder="Square footage (optional)" class="has-icon has-suffix" inputmode="numeric" />
+            <input type="text" name="sqft" placeholder="Square footage" class="has-icon has-suffix" inputmode="numeric" />
             <span class="input-suffix" id="sqftSuffix">sq ft</span>
+          </div>
+          <div style="display: flex; gap: 12px;">
+            <input type="number" name="bedrooms" placeholder="Beds" min="0" inputmode="numeric" style="width: 120px; flex: none;" />
+            <input type="number" name="bathrooms" placeholder="Baths" min="0" step="0.5" inputmode="decimal" style="width: 120px; flex: none;" />
           </div>
           <input type="hidden" name="package" value="Free first shoot" />
           <p class="schedule-note">Don't worry — we'll confirm all the details with you before the shoot.<br>This can be changed later.</p>
@@ -108,6 +112,7 @@
             <button type="button" class="step-back" onclick="goTo(1)">← Back</button>
             <button type="button" class="btn-primary step-next" onclick="goTo(3)">Next</button>
           </div>
+          <p class="step-skip"><button type="button" class="step-skip-btn" onclick="skipDate()">Don't have an exact date in mind</button></p>
         </div>
 
         <!-- STEP 3: Contact -->
@@ -161,6 +166,12 @@
         if (i === n) btn.classList.add('active');
       }
       window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function skipDate() {
+      document.getElementById('selectedDate').value = 'Flexible';
+      document.getElementById('selectedTime').value = '';
+      goTo(3);
     }
 
     // ── Flatpickr calendar ──

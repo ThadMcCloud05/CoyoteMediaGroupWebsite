@@ -243,6 +243,18 @@
     </div>
   </section>
 
+  <!-- FIRST SHOOT INTERCEPT -->
+  <div class="modal-overlay" id="firstShootModal">
+    <div class="modal" style="max-width: 420px; text-align: center; background: var(--black); border: 1px solid #2a2a2a;">
+      <button class="modal-close" id="firstShootClose" style="color: #888;">×</button>
+      <h2 style="font-size: 1.5rem; margin-bottom: 32px; color: var(--white);">Is this your first shoot with us?</h2>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <a href="booking-first.html" target="_blank" class="btn-primary" id="firstShootYes" data-direct>Yes — book my free shoot</a>
+        <a href="booking.html" target="_blank" class="btn-outline" id="firstShootNo" style="text-align: center;" data-direct>No, I've shot with you before</a>
+      </div>
+    </div>
+  </div>
+
   <!-- BOOKING MODAL -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal">
@@ -266,13 +278,6 @@
         <p class="form-section-label">Property</p>
         <input type="text" name="address" placeholder="Property address" />
         <input type="text" name="sqft" placeholder="Square footage" />
-        <select name="package">
-          <option value="" disabled selected>Select a package</option>
-          <option value="Free first shoot">Free first shoot</option>
-          <option value="Starter">Starter</option>
-          <option value="Feature">Feature</option>
-          <option value="Signature">Signature</option>
-        </select>
 
         <p class="form-section-label">Scheduling</p>
         <input type="date" name="preferred_date" />
@@ -323,6 +328,30 @@
     }
 
     // Modal
+    // First shoot intercept modal
+    const firstShootModal = document.getElementById('firstShootModal');
+
+    function openFirstShootModal(e) {
+      if (e) e.preventDefault();
+      firstShootModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFirstShootModal() {
+      firstShootModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('firstShootClose').addEventListener('click', closeFirstShootModal);
+    firstShootModal.addEventListener('click', (e) => { if (e.target === firstShootModal) closeFirstShootModal(); });
+
+    // Wire all booking buttons to the intercept modal (skip the modal's own links)
+    document.querySelectorAll('a[href="booking-first.html"], a[href="booking.html"]').forEach(btn => {
+      if (!btn.hasAttribute('data-direct')) {
+        btn.addEventListener('click', openFirstShootModal);
+      }
+    });
+
     const modal = document.getElementById('bookingModal');
 
     function openModal(e) {
@@ -333,7 +362,7 @@
 
     document.getElementById('modalClose').addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeModal(); closeFirstShootModal(); } });
 
     function closeModal() {
       modal.classList.remove('open');
