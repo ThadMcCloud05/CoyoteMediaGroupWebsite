@@ -249,6 +249,43 @@ nav {
   flex-wrap: wrap;
 }
 
+.hero-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.btn-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 18px 52px 18px 42px;
+  font-size: 1.1rem;
+}
+
+.btn-hero::after {
+  content: '$250+ value';
+  position: absolute;
+  top: 11px;
+  right: -18px;
+  background: #d93025;
+  color: var(--white);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 26px;
+  transform: rotate(30deg);
+  pointer-events: none;
+}
+
+.hero-cta-note {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 12px;
+  letter-spacing: 0.3px;
+}
+
 /* ===== PROOF BAR ===== */
 .proof-bar {
   background: var(--accent);
@@ -867,6 +904,9 @@ footer a { color: var(--accent); }
   .hero-features svg { width: 18px; height: 18px; }
   .hero-ctas { flex-direction: column; align-items: stretch; gap: 10px; }
   .hero-ctas a { text-align: center; }
+  .hero-cta-wrap { align-items: stretch; }
+  .hero-cta-wrap .btn-hero { text-align: center; }
+  .hero-cta-note { text-align: center; }
 
   /* Packages */
   .packages { grid-template-columns: 1fr; }
