@@ -168,7 +168,7 @@ nav {
 .hero {
   min-height: 100vh;
   background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%),
-              url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80') center/cover no-repeat;
+              url('assets/twilight_001.jpg') center/cover no-repeat;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
